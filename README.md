@@ -1,17 +1,22 @@
 # Final Project
 Use this `REAMDE.md` file to describe your final project (as detailed on Canvas).
 
-<<<<<<< HEAD
+
 # **Domain of Interest**
 
 ## Why are you interested in this field/domain?
 - We are interested in how poverty and income inequality evolves over time
 
-### Other examples of Data Driven Projects related to Domain:
+### Other examples of Data-Driven Projects related to Domain:
 - [Example1](https://towardsdatascience.com/using-data-science-to-study-economic-inequality-in-the-united-states-1101e9350c3d) -  In this data driven project, data is used to study economic inequality in the U.S and how it may pay pose challenges to certain populations.
 - [Example2](https://ourworldindata.org/extreme-poverty) - This project uses data to show an overview of poverty globally and also provides visualization of things such as the poverty gap, and the amount of money it would take to fill in that gap.
 - [Example3](https://sauravpahadia.shinyapps.io/ae5_final_project/) - This project used data to discover if there was any association between youth poverty and youth smoking.
-=======
+
+### Data-driven questions we hope to answer about this domain:
+- 1. How has poverty changed over the course of 10 years?
+- 2. How has race played a factor in this?
+- 3. How has the coronavirus increased the gap between the poor and the rich?
+
 # Finding Data
 ## Data Set 1: Table A-2. Households by Total Money Income, Race, and Hispanic Origin of Householder: 1967 to 2019
 [Link to Data Set](https://www.census.gov/library/publications/2020/demo/p60-270.html)
@@ -42,4 +47,3 @@ The data was collected by the US Census bureau, and the data is about people who
 58 observations, 11 features
 #### What question can be answered using the data in this dataset?
 * How does race, gender, age, and education play a role in choosing to choose the supplemental poverty measure?
->>>>>>> e14b08b7cdced794cab14ba0f9e12e9f472ec08c

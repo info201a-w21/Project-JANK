@@ -13,9 +13,9 @@ Use this `REAMDE.md` file to describe your final project (as detailed on Canvas)
 - [Example3](https://sauravpahadia.shinyapps.io/ae5_final_project/) - This project used data to discover if there was any association between youth poverty and youth smoking.
 
 ### Data-driven questions we hope to answer about this domain:
-- 1. How has poverty changed over the course of 10 years?
-- 2. How has race played a factor in this?
-- 3. How has the coronavirus increased the gap between the poor and the rich?
+1. How has poverty changed over the course of 10 years?
+2. How has race played a factor in this?
+3. How has the coronavirus increased the gap between the poor and the rich?
 
 # Finding Data
 ## Data Set 1: Table A-2. Households by Total Money Income, Race, and Hispanic Origin of Householder: 1967 to 2019

@@ -12,7 +12,7 @@ num_poverty_data <- poverty_data %>%
 poor_exemption_over_year <- ggplot(num_poverty_data) +
   geom_line(mapping = aes(x = year, y = total_poor_exemptions)) +
   labs(x = "Year", y = "Number of Poor Exemtions in U.S.",
-       title = "Change in Total Number of Poor Exemption Over Time in U.S.") +
+       title = "Change in Total Number of Poor Exemptions Over Time in U.S.") +
   scale_x_continuous("year", labels = as.character(num_poverty_data$year), 
                      breaks = num_poverty_data$year) +
   theme(axis.text.x = element_text(angle = 65))

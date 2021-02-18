@@ -50,3 +50,10 @@ poor_exemption_over_year
 chart2
 
 ```
+
+
+##### Chart 3
+```{r echo = F}
+
+
+```

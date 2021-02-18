@@ -1,4 +1,3 @@
-
 library(tidyverse)
 
 poverty_data <- read.csv('irs.csv')
@@ -10,5 +9,6 @@ year_most_poverty<- poverty_data %>%
   mutate(num_Poor.exemptions = as.numeric(gsub(",","", Poor.exemptions))) %>% 
   mutate(poverty_rate = num_Poor.exemptions/num_Total.exemptions) %>% 
   filter(poverty_rate == max(poverty_rate)) %>% 
+  arrange(Year) %>% 
   select(Year, Name, poverty_rate)
 

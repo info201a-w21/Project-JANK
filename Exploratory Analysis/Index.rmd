@@ -19,20 +19,11 @@ Some questions we hope to answer are:
 2. How has race played a factor in this?
 3. How has the coronavirus increased the gap between the poor and the rich?
 
-The datasets we chose for this exploratory analysis are from the US Census (irs.csv) and Kaggle (covid_data_log_200822.csv). Based on our script, we found out that the data was taken over the course of 30 years; from 1989 to 2018. We were also curious on how the average of both the total exemption amount and specifically the poor exemption amount changed over time. Thus, we created two new tables calculating each variable for each year, and we found out that the average for both have overall increased as time went on. 
+The datasets we chose for this exploratory analysis are from the US Census (irs.csv) and Kaggle (covid_data_log_200822.csv). Firstly, the dataset, "irs.csv", includes data from 1989 to 2018 of each state about the total exemptions, poor exemptions, AGI, and other specific age group data. We believe this was a very helpful dataset because it matches our question of seeing the poverty trend over the course of several years. Secondly, the dataset, "covid_data_log_200822.csv", includes data more centered around race and gender and the rate of COVID-19 cases in each county of each state. We thought this was useful because it showed the poverty rate of each county of every state.
+
 
 ## Data Summary Information
-
-
-
-
-
-
-
-
-
-
-
+Based on our script, we found out that the data was taken over the course of 30 years; from 1989 to 2018. We were also curious on how the average of both the total exemption amount and specifically the poor exemption amount changed over time. Thus, we created two new tables calculating each variable for each year, and we found out that the average for both have overall increased as time went on. The maximum number of poor exemptions was 6,403,391 in 2011. The minimum number of poor exmpetions was 42,831 in 1989.
 
 
 

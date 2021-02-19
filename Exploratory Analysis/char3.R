@@ -13,14 +13,13 @@ Poverty <- irs_data %>%
 
 
 compare_poverty_states <-  Poverty %>% 
-  filter(Name == "Connecticut" | Name == "Mississippi")
+  filter(Name == "Mississippi" | Name == "Connecticut")
 
 
 chart3 <- ggplot(compare_poverty_states)+
   geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = Name))+
-  labs(title = "Mean and median AGI comparison between the U.S. state with most and least poverty ",
+  labs(title = "Mean and median AGI comparison between states with most and least poverty ",
        subtitle = "From 1990 - 2018",
        x = "Mean AGI",
        y = "Median AGI")
 
-print(chart3)

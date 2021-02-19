@@ -1,15 +1,16 @@
-poverty_data <- read.csv('covid_data_log_200922.csv')
-
-# This table contains the country that has the most number of individuals
-# living in poverty from each state, number of covid cases and deaths in 
-# the county.
-
 library(tidyverse)
+library(dplyr)
 
-most_poverty_cases_deaths_log <- poverty_data %>% 
-  group_by(State) %>% 
-  filter(Poverty == max(Poverty, na.rm = T)) %>% 
-  select(County, State, Poverty, Cases, Deaths)
+poverty_data <- read.csv('irs.csv')
 
+year_most_poverty<- poverty_data %>% 
+  group_by(Year) %>% 
+  # Create a column that converts a string to numeric, replace "," with ""
+  mutate(num_Total.exemptions = as.numeric(gsub(",","", Total.exemptions))) %>% 
+  mutate(num_Poor.exemptions = as.numeric(gsub(",","", Poor.exemptions))) %>% 
+  mutate(percent_poverty_rate = 100 * num_Poor.exemptions/num_Total.exemptions) %>% 
+  filter(percent_poverty_rate == max(percent_poverty_rate)) %>% 
+  mutate_if(is.numeric, round, digits=3) %>% 
+  arrange(Year) %>% 
+  select(Year, Name, percent_poverty_rate)
 
-  

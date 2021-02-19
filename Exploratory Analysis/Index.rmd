@@ -1,0 +1,61 @@
+---
+title: "Poverty Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+source("Aggregate.r")
+source("Summary Information Script.R")
+source("char1.R")
+source("char2.R")
+```
+
+# Exploratory Analysis of U.S. Poverty Data
+We're really interested in how poverty changes over time in the U.S.
+Some questions we hope to answer are:
+
+1. How has poverty changed over the course of 10 years?
+2. How has race played a factor in this?
+3. How has the coronavirus increased the gap between the poor and the rich?
+
+The datasets we chose for this exploratory analysis are from the [US Census](https://www.census.gov/programs-surveys/saipe/guidance/model-input-data/income-tax.html). Firstly, the dataset, [irs.csv](https://www2.census.gov/programs-surveys/saipe/datasets/time-series/model-tables/irs.xls), includes data from 1989 to 2018 of each state about the total exemptions, poor exemptions, AGI, and other specific age group data. We believe this was a very helpful dataset because it matches our question of seeing the poverty trend over the course of several years. Secondly, the dataset, "covid_data_log_200822.csv", includes data more centered around race and gender and the rate of COVID-19 cases in each county of each state. We thought this was useful because it showed the poverty rate of each county of every state.
+
+
+## Data Summary Information
+Based on our script, we found out that the data was taken over the course of 30 years; from 1989 to 2018. We were also curious on how the average of both the total exemption amount and specifically the poor exemption amount changed over time. Thus, we created two new tables calculating each variable for each year, and we found out that the average for both have overall increased as time went on. The maximum number of poor exemptions was 6,403,391 in 2011. The minimum number of poor exmpetions was 42,831 in 1989.
+
+
+#### The aggregate table below shows the state with the highest poor exemption rate (which reflects poverty rate) in the U.S. in each year. 
+
+Two observations we had were 1) out of the 50 states, only Mississippi and New Mexico appeared on the table and 2) The poverty rate for these two states are around 25% for each year and this number has not really changed since 1989 despite the increase in population.
+
+```{r, echo = F, message = F}
+kable(year_most_poverty)
+```
+
+#### Chart 1 below is intended to show the change in number of total poor exemptions over the course of 29 years in the U.S.
+
+One observation we had was that between 2006 - 2007, the graph has a steep positive slope, which represents a rapid increase in poverty during this time period. The time line of spike and increase in poor exemptions fit the time line of the Ten Year Financial Crisis took place in the U.S.
+```{r echo=F}
+poor_exemption_over_year
+
+```
+
+
+
+#### Chart 2 below is intended to show thenumber of total poor exemptions over the course of 29 years in the 5 poorest states in the U.S. 
+Very interestingly, just as the previous graph, there's a spike in number of poor exemptions in each state around 2017. This is reflective of the Great Recession and its negative impact on the 5 poorest states in the U.S. Judging from the graph, Kentucky, and Louisiana have a higher *COUNT* of poor exemptions. However, according to our table above, Mississipi and New Mexico have a higher *RATE* of poor exemptions.
+
+```{r echo = F}
+chart2
+
+```
+
+
+##### Chart 3
+```{r echo = F}
+
+
+```

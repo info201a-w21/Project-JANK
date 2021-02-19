@@ -1,5 +1,5 @@
 # Final Project
-Use this `REAMDE.md` file to describe your final project (as detailed on Canvas).
+### [Exploratory Analysis Report](https://info201a-w21.github.io/Project-JANK/Exploratory%20Analysis/) 
 
 
 # **Domain of Interest**

@@ -1,4 +1,5 @@
 library(tidyverse)
+library(dplyr)
 
 poverty_data <- read.csv('irs.csv')
 
@@ -7,8 +8,9 @@ year_most_poverty<- poverty_data %>%
   # Create a column that converts a string to numeric, replace "," with ""
   mutate(num_Total.exemptions = as.numeric(gsub(",","", Total.exemptions))) %>% 
   mutate(num_Poor.exemptions = as.numeric(gsub(",","", Poor.exemptions))) %>% 
-  mutate(poverty_rate = num_Poor.exemptions/num_Total.exemptions) %>% 
-  filter(poverty_rate == max(poverty_rate)) %>% 
+  mutate(percent_poverty_rate = 100 * num_Poor.exemptions/num_Total.exemptions) %>% 
+  filter(percent_poverty_rate == max(percent_poverty_rate)) %>% 
+  mutate_if(is.numeric, round, digits=3) %>% 
   arrange(Year) %>% 
-  select(Year, Name, poverty_rate)
+  select(Year, Name, percent_poverty_rate)
 

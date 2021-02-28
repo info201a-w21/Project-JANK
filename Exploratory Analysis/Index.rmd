@@ -1,5 +1,6 @@
 ---
 title: "Poverty Report"
+author: "Justina Gao, Kenneth Khove, Nicole Fang, Angela He"
 output: html_document
 ---
 
@@ -10,6 +11,7 @@ source("Aggregate.r")
 source("Summary Information Script.R")
 source("char1.R")
 source("char2.R")
+source("char3.R")
 ```
 
 # Exploratory Analysis of U.S. Poverty Data
@@ -46,7 +48,7 @@ poor_exemption_over_year
 
 
 #### Chart 2 below is intended to show the number of total poor exemptions over the course of 29 years in the 5 poorest states in the U.S. 
-Very interestingly, just as the previous graph, there's a spike in number of poor exemptions in each state around 2017. This is reflective of the Great Recession and its negative impact on the 5 poorest states in the U.S. Judging from the graph, Kentucky, and Louisiana have a higher *COUNT* of poor exemptions. However, according to our table above, Mississipi and New Mexico have a higher *RATE* of poor exemptions.
+Very interestingly, just as the previous graph, there's a spike in number of poor exemptions in each state around 2007. This is reflective of the Great Recession and its negative impact on the 5 poorest states in the U.S. Judging from the graph, Kentucky, and Louisiana have a higher *COUNT* of poor exemptions. However, according to our table above, Mississipi and New Mexico have a higher *RATE* of poor exemptions.
 
 ```{r echo = F}
 chart2

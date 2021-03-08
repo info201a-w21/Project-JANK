@@ -57,7 +57,7 @@ chart2
 
 
 ##### Chart 3 below is intended to show the difference between the state with most poverty and the state with least poverty based on the Mean and Median AGI(Adjusted Gross Income).
-As we can see from the scatter plot, there are huge descrepancies between the data points of the state with most poverty, Mississippi, and the state with the least poverty, Connecticut. Both the mean and median AGI are significantly higher than Mississippi, and this may be due to many factors such as population, education, race, living conditions, etc. However, we also notice that there is a positive upward trend as the years go on for both states.
+As we can see from the scatter plot, there are huge descrepancies between the data points of the state with most poverty, Mississippi, and the state with the least poverty, Connecticut. Both the mean and median AGI(Adjusted Gross Income: An individual's total gross income after removing deductions or adjustments) are significantly higher than Mississippi, and this may be due to many factors such as population, education, race, living conditions, etc. However, we also notice that there is a positive upward trend as the years go on for both states.
 
 ```{r echo = F}
 chart3

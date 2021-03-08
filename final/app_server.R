@@ -1,4 +1,4 @@
-
+poverty_data <- read.csv('irs.csv')
 
 
 

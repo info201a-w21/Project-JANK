@@ -17,7 +17,7 @@ viz_one <- tabPanel(
 
 
 
-ui <- fluidPage(theme = shinytheme("yeti"),
+ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
                            viz_one#,

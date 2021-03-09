@@ -7,6 +7,11 @@ viz_one <- tabPanel(
   titlePanel("gfgf")
 )
 
+viz_two <- tabPanel(
+  "Visualization 2",
+  titlePanel("What's up Dawg")
+)
+
 
 
 
@@ -17,8 +22,8 @@ viz_one <- tabPanel(
 ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
-                           viz_one#,
-                           # viz_two,
+                           viz_one,
+                           viz_two#,
                            # viz_three,
                            # conclusion_page
                            )

@@ -27,6 +27,7 @@ Avg_exemptions <- mutated_data %>%
 
 
 
+
 server <- function(input, output){
   
   output$Viz1 <- renderPlotly({

@@ -1,4 +1,5 @@
 poverty_data <- read.csv('irs.csv')
+race_df <- read.csv('dt.csv')
 
 # Viz1 --------------------------------------------------------------------
 
@@ -24,9 +25,6 @@ Avg_exemptions <- mutated_data %>%
             Number_Poor_Child_exemptions = mean(sum(Number_Poor_Child_exemptions)))
  
 
-
-     
-
 # Render-server -----------------------------------------------------------
 
 
@@ -47,17 +45,16 @@ server <- function(input, output){
        })
 
 # Render-viz2 -------------------------------------------------------------
-
+  
   output$Viz2 <- renderPlot({
-    mdf <- poverty_data %>% 
-      filter(Name == "California") %>%
-      transmute(p = as.numeric(gsub(",","", Poor.exemptions)),
-                year = Year, state = Name) 
+    mdf <- race_df %>% 
+      filter(Location == "California") %>% 
+      select(Year, Black)
     
     grf <- ggplot(mdf) +
-      geom_line(mapping = aes(x = year, y = p)) +
-      labs(x = "Year", y = "Number of Poor Exemption in California",
-           title = "Change in Total Number of Poor Exemptions Over Time in California")
+      geom_col(mapping = aes(x = Year, y = Black)) +
+      labs(x = "Year", y = "black poverty count",
+           title = "Poverty count by race") 
     return(grf)
   })
   

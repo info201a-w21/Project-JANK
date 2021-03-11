@@ -45,7 +45,7 @@ viz_one <- tabPanel(
 
 viz_two <- tabPanel(
   "Visualization 2",
-  titlePanel("What's up Dawg"),
+  titlePanel("Poverty Count by Race"),
   plotOutput("Viz2")
 )
 # x-axis: year

@@ -1,21 +1,13 @@
+
+# Intro-page --------------------------------------------------------------
+
+
 intro_page <- tabPanel(
   "Introduction"
 )
 
-<<<<<<< HEAD
-=======
-viz_one <- tabPanel(
-  "Visualization 1",
-  titlePanel("gfgf")
-)
 
-viz_two <- tabPanel(
-  "Visualization 2",
-  titlePanel("What's up Dawg")
-)
-
-
->>>>>>> 39374dc4baa51231b89a7e962a0b961775a3fa1a
+# Viz1 --------------------------------------------------------------------
 
 mutated_data <- poverty_data %>% 
   transmute(Number_Total_exemptions = as.numeric(gsub(",","", Total.exemptions)),
@@ -48,6 +40,17 @@ viz_one <- tabPanel(
       plotlyOutput(outputId = "Viz1")
     )
 ))
+
+# Viz2 --------------------------------------------------------------------
+
+viz_two <- tabPanel(
+  "Visualization 2",
+  titlePanel("What's up Dawg"),
+  plotOutput("Viz2")
+)
+
+
+# UI ----------------------------------------------------------------------
 
 
 

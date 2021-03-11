@@ -1,5 +1,7 @@
 poverty_data <- read.csv('irs.csv')
 
+# Viz1 --------------------------------------------------------------------
+
 mutated_data <- poverty_data %>% 
   transmute(Number_Total_exemptions = as.numeric(gsub(",","", Total.exemptions)),
          Number_Poor_exemptions = as.numeric(gsub(",","", Poor.exemptions)),
@@ -20,16 +22,18 @@ Avg_exemptions <- mutated_data %>%
             Number_65_over_exemptions = mean(sum(Number_65_over_exemptions)),
             Number_65_under_exemptions = mean(sum(Number_65_under_exemptions)),
             Number_Poor_Child_exemptions = mean(sum(Number_Poor_Child_exemptions)))
-      
+ 
 
 
+     
 
-
-
+# Render-server -----------------------------------------------------------
 
 
 server <- function(input, output){
-  
+
+# Render-viz1 -------------------------------------------------------------
+
   output$Viz1 <- renderPlotly({
     
     filtered_data <- Avg_exemptions %>%
@@ -41,5 +45,20 @@ server <- function(input, output){
  
     ggplotly(plot1)
        })
+
+# Render-viz2 -------------------------------------------------------------
+
+  output$Viz2 <- renderPlot({
+    mdf <- poverty_data %>% 
+      filter(Name == "California") %>%
+      transmute(p = as.numeric(gsub(",","", Poor.exemptions)),
+                year = Year, state = Name) 
+    
+    grf <- ggplot(mdf) +
+      geom_line(mapping = aes(x = year, y = p)) +
+      labs(x = "Year", y = "Number of Poor Exemption in California",
+           title = "Change in Total Number of Poor Exemptions Over Time in California")
+    return(grf)
+  })
   
 }

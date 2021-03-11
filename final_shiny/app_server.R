@@ -1,5 +1,8 @@
 poverty_data <- read.csv('irs.csv')
 race_df <- read.csv('dt.csv')
+library(ggplot2)
+library(plotly)
+library(tidyverse)
 
 # Viz1 --------------------------------------------------------------------
 
@@ -25,6 +28,14 @@ Avg_exemptions <- mutated_data %>%
             Number_Poor_Child_exemptions = mean(sum(Number_Poor_Child_exemptions)))
  
 
+# Viz2 --------------------------------------------------------------------
+
+race_mcol <- race_df %>% 
+  rename(American.Indian_Alaska.Native = American.IndiaNAlaska.Native, Multiple.Races, 
+         Asian_Native.Hawaiian.and.Pacific.Islander = Asian.Native.Hawaiian.and.Pacific.Islander,
+         White = White, Black = Black, Hispanic = Hispanic, Multiple.Races = Multiple.Races,
+         Year = Year, Location = Location, Total = Total)
+
 # Render-server -----------------------------------------------------------
 
 
@@ -45,17 +56,27 @@ server <- function(input, output){
        })
 
 # Render-viz2 -------------------------------------------------------------
+  # x-axis: year
   
-  output$Viz2 <- renderPlot({
-    mdf <- race_df %>% 
-      filter(Location == "California") %>% 
-      select(Year, Black)
+  # y-axis: race
+  # option: state
+  
+  output$Viz2 <- renderPlotly({
+    mdf <- race_mcol %>% 
+      filter(Location == input$state_var) %>% 
+      select(Year, input$race_var)
     
     grf <- ggplot(mdf) +
-      geom_col(mapping = aes(x = Year, y = Black)) +
-      labs(x = "Year", y = "black poverty count",
-           title = "Poverty count by race") 
-    return(grf)
+      geom_col(mapping = aes_string(x = mdf$Year, y = input$race_var), fill = "#385c84") +
+      labs(x = "Year", y = paste("Pverty Count Represented by Race:", 
+                                 input$race_var, sep = " "),
+           title = paste("Poverty Count of", input$race_var, 
+                         "Population in", input$state_var, "From 2009 to 2019", sep = " ")) +
+      scale_x_continuous("Year", labels = as.character(mdf$Year), 
+                         breaks = mdf$Year) +
+      theme(axis.text.x = element_text(angle = 65))
+    
+    ggplotly(grf)
   })
   
 }

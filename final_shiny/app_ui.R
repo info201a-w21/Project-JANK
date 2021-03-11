@@ -48,7 +48,9 @@ viz_two <- tabPanel(
   titlePanel("What's up Dawg"),
   plotOutput("Viz2")
 )
-
+# x-axis: year
+# y-asix: total poor exemption
+# widegt: State
 
 # UI ----------------------------------------------------------------------
 

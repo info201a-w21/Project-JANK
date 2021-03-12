@@ -9,14 +9,14 @@ intro_page <- tabPanel(
 
 # Viz1 --------------------------------------------------------------------
 
-mutated_data <- poverty_data %>% 
+mutated_data <- poverty_data %>%
   transmute(Number_Total_exemptions = as.numeric(gsub(",","", Total.exemptions)),
             Number_Poor_exemptions = as.numeric(gsub(",","", Poor.exemptions)),
             Number_65_over_exemptions = as.numeric(gsub(",","", Age.65.and.over.poor.exemptions)),
             Number_65_under_exemptions = as.numeric(gsub(",","", Poor.exemptions.under.age.65)),
             Number_Poor_Child_exemptions = as.numeric(gsub(",","", Poor.child.exemptions)),
-            Year = as.numeric(Year), 
-            State = Name) %>% 
+            Year = as.numeric(Year),
+            State = Name) %>%
   select(State, Year, Number_Total_exemptions, Number_Poor_exemptions,
          Number_65_over_exemptions, Number_65_under_exemptions,
          Number_Poor_Child_exemptions)
@@ -28,13 +28,16 @@ viz_one <- tabPanel(
   titlePanel("Trend In Exemptions Over Time"),
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "state", label = "Select State",
-                  choices = filtered_states, selected = "Washington"),
-      
+      # selectInput(inputId = "state", label = "Select State",
+      #             choices = filtered_states, selected = "Washington"),
+
       radioButtons(inputId = "exemptype", label = ("Choose Exemption To View"),
-                   choices = list("Number_Total_exemptions", "Number_Poor_exemptions","Number_65_over_exemptions",
-                                  "Number_65_under_exemptions","Number_Poor_Child_exemptions"),
-                   selected = "Number_Poor_Child_exemptions")),
+                   choices = list("Total Exemptions" = "Number_Total_exemptions", 
+                                  "Poor Exemptions" = "Number_Poor_exemptions",
+                                  "Over 65yrs Poor Exemptions" = "Number_65_over_exemptions",
+                                  "Under 65yrs Poor Exemptions" = "Number_65_under_exemptions",
+                                  "Poor Child Exemptions" = "Number_Poor_Child_exemptions"),
+                   selected = "Number_Total_exemptions")),
 
     mainPanel(
       plotlyOutput(outputId = "Viz1")

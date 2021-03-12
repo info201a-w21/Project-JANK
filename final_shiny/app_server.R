@@ -9,25 +9,25 @@ library(scales)
 mutated_data <- poverty_data %>%
   transmute(Total_exemptions = as.numeric(gsub(",","", Total.exemptions)),
          Poor_exemptions = as.numeric(gsub(",","", Poor.exemptions)),
-         Over_65_exemptions = as.numeric(gsub(",","", Age.65.and.over.poor.exemptions)),
-         Under_65_exemptions = as.numeric(gsub(",","", Poor.exemptions.under.age.65)),
-         Child_Poor_exemptions = as.numeric(gsub(",","", Poor.child.exemptions)),
+         Poor_Exemptions_Over_Age65 = as.numeric(gsub(",","", Age.65.and.over.poor.exemptions)),
+         Poor_Exemptions_Under_Age65 = as.numeric(gsub(",","", Poor.exemptions.under.age.65)),
+         Poor_Child_exemptions = as.numeric(gsub(",","", Poor.child.exemptions)),
          Year = Year,
          State = Name) %>%
   select(State, Year, Total_exemptions,Poor_exemptions,
-         Over_65_exemptions, Under_65_exemptions,
-         Child_Poor_exemptions)
+         Poor_Exemptions_Over_Age65, Poor_Exemptions_Under_Age65,
+         Poor_Child_exemptions)
 
 # Filter for avg exemptions each year
 Avg_exemptions <- mutated_data %>%
   group_by(Year) %>%
   summarise(Total_exemptions = mean(sum(Total_exemptions)),
             Poor_exemptions = mean(sum(Poor_exemptions)),
-            Over_65_exemptions = mean(sum(Over_65_exemptions)),
-            Under_65_exemptions = mean(sum(Under_65_exemptions)),
-            Child_Poor_exemptions = mean(sum(Child_Poor_exemptions))) %>% 
-  select(Year, Total_exemptions, Poor_exemptions, Over_65_exemptions,
-         Under_65_exemptions, Child_Poor_exemptions)
+            Poor_Exemptions_Over_Age65 = mean(sum(Poor_Exemptions_Over_Age65)),
+            Poor_Exemptions_Under_Age65 = mean(sum(Poor_Exemptions_Under_Age65)),
+            Poor_Child_exemptions = mean(sum(Poor_Child_exemptions))) %>% 
+  select(Year, Total_exemptions, Poor_exemptions, Poor_Exemptions_Over_Age65,
+         Poor_Exemptions_Under_Age65, Poor_Child_exemptions)
 
 
 # Viz2 --------------------------------------------------------------------
@@ -54,9 +54,10 @@ server <- function(input, output){
   
 
     plot1 <- ggplot(data = filtered_data)+
-      geom_line(mapping = aes_string(x = "Year", y = input$exemptype), colour = "SkyBlue")+
-      labs(y = paste("Number of",input$exemptype, sep = " "),
-           title = paste("Rate of", input$exemptype, "Over Time"))+
+      geom_line(mapping = aes_string(x = "Year", y = input$exemptype), 
+                colour = "SkyBlue")+
+      labs(y = paste("Number Of",input$exemptype, sep = " "),
+           title = paste("Rate of", input$exemptype, "Over Time in the U.S"))+
       scale_y_continuous(
         labels = unit_format(unit = "M", scale = 1e-6)
       )

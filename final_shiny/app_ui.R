@@ -37,9 +37,9 @@ viz_one <- tabPanel(
       radioButtons(inputId = "exemptype", label = ("Choose Exemption To View"),
                    choices = list("Total Exemptions" = "Total_exemptions", 
                                   "Poor Exemptions" = "Poor_exemptions",
-                                  "Over 65yrs Poor Exemptions" = "Over_65_exemptions",
-                                  "Under 65yrs Poor Exemptions" = "Under_65_exemptions",
-                                  "Poor Child Exemptions" = "Child_Poor_exemptions"),
+                                  "Over 65yrs Poor Exemptions" = "Poor_Exemptions_Over_Age65",
+                                  "Under 65yrs Poor Exemptions" = "Poor_Exemptions_Under_Age65",
+                                  "Poor Child Exemptions" = "Poor_Child_exemptions"),
                    selected = "Poor_exemptions"),
       
       sliderInput(inputId = "year", label = "Year Range", min = years[1], max = years[2],

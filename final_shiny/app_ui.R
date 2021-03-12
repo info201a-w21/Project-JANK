@@ -23,6 +23,9 @@ mutated_data <- poverty_data %>%
 
 filtered_states <- unique(mutated_data$State)
 
+years <- c(min(mutated_data$Year),
+           max(mutated_data$Year))
+
 viz_one <- tabPanel(
   "Visualization 1",
   titlePanel("Trend In Exemptions Over Time"),
@@ -32,15 +35,19 @@ viz_one <- tabPanel(
       #             choices = filtered_states, selected = "Washington"),
 
       radioButtons(inputId = "exemptype", label = ("Choose Exemption To View"),
-                   choices = list("Total Exemptions" = "Number_Total_exemptions", 
-                                  "Poor Exemptions" = "Number_Poor_exemptions",
-                                  "Over 65yrs Poor Exemptions" = "Number_65_over_exemptions",
-                                  "Under 65yrs Poor Exemptions" = "Number_65_under_exemptions",
-                                  "Poor Child Exemptions" = "Number_Poor_Child_exemptions"),
-                   selected = "Number_Total_exemptions")),
+                   choices = list("Total Exemptions" = "Total_exemptions", 
+                                  "Poor Exemptions" = "Poor_exemptions",
+                                  "Over 65yrs Poor Exemptions" = "Over_65_exemptions",
+                                  "Under 65yrs Poor Exemptions" = "Under_65_exemptions",
+                                  "Poor Child Exemptions" = "Child_Poor_exemptions"),
+                   selected = "Poor_exemptions"),
+      
+      sliderInput(inputId = "year", label = "Year Range", min = years[1], max = years[2],
+                  value = years, sep = "")),
 
     mainPanel(
-      plotlyOutput(outputId = "Viz1")
+      plotlyOutput(outputId = "Viz1"),
+      p("fvjfvjfdkj")
     )
 ))
 

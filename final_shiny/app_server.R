@@ -54,7 +54,7 @@ server <- function(input, output){
   
 
     plot1 <- ggplot(data = filtered_data)+
-      geom_line(mapping = aes_string(x = "Year", y = input$exemptype))+
+      geom_line(mapping = aes_string(x = "Year", y = input$exemptype), colour = "SkyBlue")+
       labs(y = paste("Number of",input$exemptype, sep = " "),
            title = paste("Rate of", input$exemptype, "Over Time"))+
       scale_y_continuous(

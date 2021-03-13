@@ -9,18 +9,6 @@ intro_page <- tabPanel(
 
 # Viz1 --------------------------------------------------------------------
 
-mutated_data <- poverty_data %>%
-  transmute(Number_Total_exemptions = as.numeric(gsub(",","", Total.exemptions)),
-            Number_Poor_exemptions = as.numeric(gsub(",","", Poor.exemptions)),
-            Number_65_over_exemptions = as.numeric(gsub(",","", Age.65.and.over.poor.exemptions)),
-            Number_65_under_exemptions = as.numeric(gsub(",","", Poor.exemptions.under.age.65)),
-            Number_Poor_Child_exemptions = as.numeric(gsub(",","", Poor.child.exemptions)),
-            Year = as.numeric(Year),
-            State = Name) %>%
-  select(State, Year, Number_Total_exemptions, Number_Poor_exemptions,
-         Number_65_over_exemptions, Number_65_under_exemptions,
-         Number_Poor_Child_exemptions)
-
 filtered_states <- unique(mutated_data$State)
 
 years <- c(min(mutated_data$Year),
@@ -47,7 +35,7 @@ viz_one <- tabPanel(
 
     mainPanel(
       plotlyOutput(outputId = "Viz1"),
-      p("fvjfvjfdkj")
+      p("")
     )
 ))
 

@@ -55,14 +55,13 @@ server <- function(input, output){
 
     plot1 <- ggplot(data = filtered_data)+
       geom_line(mapping = aes_string(x = "Year", y = input$exemptype), 
-                colour = "SkyBlue")+
+                colour = "SkyBlue", size = 1.5)+
       labs(y = paste("Number Of",input$exemptype, sep = " "),
-           title = paste("Rate of", input$exemptype, "Over Time in the U.S"))+
+           title = paste(input$exemptype,"Over Time in the U.S"))+
       scale_y_continuous(
         labels = unit_format(unit = "M", scale = 1e-6)
       )
         
-
     ggplotly(plot1)
        })
 

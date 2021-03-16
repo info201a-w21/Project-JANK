@@ -56,7 +56,14 @@ viz_one <- tabPanel(
 
     mainPanel(
       plotlyOutput(outputId = "Viz1"),
-      p("")
+      p("In this chart you are able to filter through for the type of exemption
+        and the year range you would like to view, which will display the average number 
+        of exemptions by type in the United States. Firsly, 'Poor Exemptions'
+        indicates that a household earned less than their states federal income poverty 
+        level. As you may notice the number of poor exemptions gradually increases from 1990's to
+        roughly 2011, where it begins to slowly decline; which may be likely due to the decrease 
+        in unemployment. The most drastic change in the chart you see, is the spike in poor exemptions in the year 2007, which 
+        is surely correlated to the financial crisis, or great recession of 2007. ")
     )
 ))
 
@@ -64,10 +71,7 @@ viz_one <- tabPanel(
 # Viz2 --------------------------------------------------------------------
 race_col <- race_df %>% 
   select(White, Black, Hispanic, Asian.Native.Hawaiian.and.Pacific.Islander, 
-         American.IndiaNAlaska.Native, Multiple.Races) %>% 
-  rename(American.Indian_Alaska.Native = American.IndiaNAlaska.Native, Multiple.Races, 
-         Asian_Native.Hawaiian.and.Pacific.Islander = Asian.Native.Hawaiian.and.Pacific.Islander,
-         White = White, Black = Black, Hispanic = Hispanic, Multiple.Races = Multiple.Races)
+         American.IndiaNAlaska.Native, Multiple.Races) 
 states <- unique(race_df$Location)
 
 viz_two <- tabPanel(

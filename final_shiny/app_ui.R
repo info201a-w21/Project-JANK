@@ -3,7 +3,15 @@ poverty_data <- read.csv('irs.csv')
 race_df <- read.csv('dt.csv')
 # Intro-page --------------------------------------------------------------
 intro_page <- tabPanel(
-  "Introduction"
+  "Introduction",
+  mainPanel(
+    p("Testing testing testing fgfdbdfjbjhdgkjrgkjbvjbdfhjlbvhvjhbfvhjbdfkjvkjfdbjdfb
+      bjhdfibdfbhdfhbdfhbdfhbjbfjdfbkjhdfbhdfvhfsugbv vkjfdnvifdhgiufhbjkddfvbdj"),
+    
+    
+    img(src = "https://www.chicagotribune.com/resizer/GWAm3cmb70hTN6BsGYyyh-uyJrw=/1200x0/top/cloudfront-us-east-1.images.arcpublishing.com/tronc/2HJEFCBLGV2GFYQOHJ2NSXG7BQ.jpg",
+                height = 400, width = 625, align = "right")
+                )
 )
 
 

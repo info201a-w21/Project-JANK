@@ -100,7 +100,8 @@ viz_two <- tabPanel(
 
 
 viz_three <- tabPanel(
-  "Visualization 3"
+  "Visualization 3",
+  plotlyOutput("Viz3")
 )
 
 
@@ -133,8 +134,6 @@ takeaways <- tabPanel(
 
 
 # UI ----------------------------------------------------------------------
-
-
 
 ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",

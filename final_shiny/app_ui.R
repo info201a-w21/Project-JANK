@@ -4,14 +4,28 @@ race_df <- read.csv('dt.csv')
 # Intro-page --------------------------------------------------------------
 intro_page <- tabPanel(
   "Introduction",
-  mainPanel(
-    p("Testing testing testing fgfdbdfjbjhdgkjrgkjbvjbdfhjlbvhvjhbfvhjbdfkjvkjfdbjdfb
-      bjhdfibdfbhdfhbdfhbdfhbjbfjdfbkjhdfbhdfvhfsugbv vkjfdnvifdhgiufhbjkddfvbdj"),
-    
-    
-    img(src = "https://www.chicagotribune.com/resizer/GWAm3cmb70hTN6BsGYyyh-uyJrw=/1200x0/top/cloudfront-us-east-1.images.arcpublishing.com/tronc/2HJEFCBLGV2GFYQOHJ2NSXG7BQ.jpg",
-                height = 400, width = 625, align = "right")
-                )
+
+  titlePanel("Our Purpose"),
+  p(" One of the biggest problems in society today and as well as the past has
+  been",strong("poverty"), ". Being in poverty means that the person is", strong("not"),
+  "or", strong("barely")," able to  meet the minimum needs of basic living. In the past year,
+  the coronavirus pandemic occured and has effected people of all social statuses.
+  people from going to their daily job and earning money."),
+  p("In this project, we wanted to analyze the current trend of poverty in the US
+    by using data from the US Census focusing on", a(href = "https://www.census.gov/library/publications/2020/demo/p60-270.html", "household demographics"),
+    ",", a(href = "https://www2.census.gov/programs-surveys/saipe/datasets/2019/2019-school-districts/ussd19.xls", "school district income"),
+    ", and", a(href = "https://www2.census.gov/programs-surveys/demo/tables/p60/268/table1.xls", "supplemental poverty measurment"), "."),
+  p("We sought to answer the following questions:"),
+  tags$div(
+    tags$ul(
+      tags$li("How has poverty changed over the course of 10 years?"),
+      tags$li("How has race played a factor in this?"),
+      tags$li("How has the coronavirus increased the gap between the poor and the rich?")
+
+    )
+  ),
+  img("", src = "https://ichef.bbci.co.uk/news/976/cpsprodpb/106E7/production/_114930376_hi061073153.jpg")
+
 )
 
 
@@ -31,59 +45,92 @@ viz_one <- tabPanel(
       #             choices = filtered_states, selected = "Washington"),
 
       radioButtons(inputId = "exemptype", label = ("Choose Exemption To View"),
-                   choices = list("Total Exemptions" = "Total_exemptions", 
+                   choices = list("Total Exemptions" = "Total_exemptions",
                                   "Poor Exemptions" = "Poor_exemptions",
                                   "Over 65yrs Poor Exemptions" = "Poor_Exemptions_Over_Age65",
                                   "Under 65yrs Poor Exemptions" = "Poor_Exemptions_Under_Age65",
                                   "Poor Child Exemptions" = "Poor_Child_exemptions"),
                    selected = "Poor_exemptions"),
-      
+
       sliderInput(inputId = "year", label = "Year Range", min = years[1], max = years[2],
                   value = years, sep = "")),
 
     mainPanel(
       plotlyOutput(outputId = "Viz1"),
       p("In this chart you are able to filter through for the type of exemption
-        and the year range you would like to view, which will display the average number 
+        and the year range you would like to view, which will display the average number
         of exemptions by type in the United States. Firsly, 'Poor Exemptions'
-        indicates that a household earned less than their states federal income poverty 
+        indicates that a household earned less than their states federal income poverty
         level. As you may notice the number of poor exemptions gradually increases from 1990's to
-        roughly 2011, where it begins to slowly decline; which may be likely due to the decrease 
-        in unemployment. The most drastic change in the chart you see, is the spike in poor exemptions in the year 2007, which 
+        roughly 2011, where it begins to slowly decline; which may be likely due to the decrease
+        in unemployment. The most drastic change in the chart you see, is the spike in poor exemptions in the year 2007, which
         is surely correlated to the financial crisis, or great recession of 2007. ")
     )
 ))
 
 
 # Viz2 --------------------------------------------------------------------
-race_col <- race_df %>% 
-  select(White, Black, Hispanic, Asian.Native.Hawaiian.and.Pacific.Islander, 
-         American.IndiaNAlaska.Native, Multiple.Races) %>% 
-  rename(American.Indian_Alaska.Native = American.IndiaNAlaska.Native, Multiple.Races, 
-         Asian_Native.Hawaiian.and.Pacific.Islander = Asian.Native.Hawaiian.and.Pacific.Islander,
-         White = White, Black = Black, Hispanic = Hispanic, Multiple.Races = Multiple.Races)
+race_col <- race_df %>%
+  select(White, Black, Hispanic, Asian.Native.Hawaiian.and.Pacific.Islander,
+         American.IndiaNAlaska.Native, Multiple.Races)
 states <- unique(race_df$Location)
 
 viz_two <- tabPanel(
   "Visualization 2",
-  
+
   y_input <- selectInput(
     inputId = "race_var",
-    choices = colnames(race_col),            
+    choices = colnames(race_col),
     label = "Select a Race"
   ),
   state_input <- selectInput(
     inputId = "state_var",
-    choices = states,            
+    choices = states,
     label = "Select a State Or Territory"
   ),
   titlePanel("Exam Poverty Count by Race Over the Course of 10 Years"),
   plotlyOutput("Viz2")
-  
+
 )
 # x-axis: year
 # y-axis: race
 # option: state
+
+# Viz3 --------------------------------------------------------------------
+
+
+viz_three <- tabPanel(
+  "Visualization 3"
+)
+
+
+
+
+# Takeaways ----------------------------------------------------------------
+takeaways <- tabPanel(
+  "Summary",
+  titlePanel("Final Takeaways"),
+  p("Reflecting back to the beginning of this project, our goals was to figure out these questions:"),
+  tags$div(
+    tags$ul(
+      tags$li("How has poverty changed over the course of 10 years?"),
+      tags$li("How has race played a factor in this?"),
+      tags$li("How has the coronavirus increased the gap between the poor and the rich?")
+    )),
+  p("From the first visualization we crafted, it showed the trend of expeptions
+    over time. We specifcially wanted to understand those of the poor community.
+    From that graph, we can tell that there has actually been a steady decrease
+    in poor expemtions since around 2012. Because of this, we can safely assume
+    that more and more people are able to pay off their own taxes. This answers our first question."),
+  p("From the second visualization, it showed the exam poverty rate by race in the past 10 years.
+    Since our second question is race-related, we wanted to specifically see the
+    data of each race to get a clear view of any patterns. From the visual, we can tell that _________"),
+  p("Lastly, the third visualization shows the effect of the coronavirus on the
+    social gap between the rich and the poor. It is widely known that the coronavirus
+    had an impact on all social classes, but we didn't know the real effects on
+    the gap which led us to create this visual. From the graph, we can see that ______"),
+  p("All in all, poverty...."))
+
 
 # UI ----------------------------------------------------------------------
 
@@ -93,9 +140,11 @@ ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
                            viz_one,
-                           viz_two#,
-                           # viz_three,
-                           # conclusion_page
+
+                           viz_two,
+                           viz_three,
+                           takeaways
+
                            )
 
                 )

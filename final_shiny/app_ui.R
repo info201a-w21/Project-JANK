@@ -50,10 +50,7 @@ viz_one <- tabPanel(
 # Viz2 --------------------------------------------------------------------
 race_col <- race_df %>% 
   select(White, Black, Hispanic, Asian.Native.Hawaiian.and.Pacific.Islander, 
-         American.IndiaNAlaska.Native, Multiple.Races) %>% 
-  rename(American.Indian_Alaska.Native = American.IndiaNAlaska.Native, Multiple.Races, 
-         Asian_Native.Hawaiian.and.Pacific.Islander = Asian.Native.Hawaiian.and.Pacific.Islander,
-         White = White, Black = Black, Hispanic = Hispanic, Multiple.Races = Multiple.Races)
+         American.IndiaNAlaska.Native, Multiple.Races) 
 states <- unique(race_df$Location)
 
 viz_two <- tabPanel(

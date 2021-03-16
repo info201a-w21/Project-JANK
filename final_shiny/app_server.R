@@ -32,11 +32,6 @@ Avg_exemptions <- mutated_data %>%
 
 # Viz2 --------------------------------------------------------------------
 
-# race_mcol <- race_df %>%
-#   rename(American.Indian_Alaska.Native = American.IndiaNAlaska.Native, Multiple.Races,
-#          Asian_Native.Hawaiian.and.Pacific.Islander = Asian.Native.Hawaiian.and.Pacific.Islander,
-#          White = White, Black = Black, Hispanic = Hispanic, Multiple.Races = Multiple.Races,
-#          Year = Year, Location = Location, Total = Total)
 
 # Render-server -----------------------------------------------------------
 
@@ -65,14 +60,10 @@ server <- function(input, output){
     ggplotly(plot1)
        })
 
-# Render-viz2 -------------------------------------------------------------
-  # x-axis: year
-  
-  # y-axis: race
-  # option: state
+# Render-viz2 -------------------------------------------------------------e
   
   output$Viz2 <- renderPlotly({
-    mdf <- race_mcol %>% 
+    mdf <- race_df %>% 
       filter(Location == input$state_var) %>% 
       select(Year, input$race_var)
     

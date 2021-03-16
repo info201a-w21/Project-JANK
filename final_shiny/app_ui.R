@@ -3,7 +3,28 @@ poverty_data <- read.csv('irs.csv')
 race_df <- read.csv('dt.csv')
 # Intro-page --------------------------------------------------------------
 intro_page <- tabPanel(
-  "Introduction"
+  "Introduction",
+  titlePanel("Our Purpose"),
+  p(" One of the biggest problems in society today and as well as the past has 
+  been",strong("poverty"), ". Being in poverty means that the person is", strong("not"), 
+  "or", strong("barely")," able to  meet the minimum needs of basic living. In the past year,
+  the coronavirus pandemic occured and has effected people of all social statuses. 
+  Not only were there fatalities, there were also many obstacles that restricted 
+  people from going to their daily job and earning money."),
+  p("In this project, we wanted to analyze the current trend of poverty in the US 
+    by using data from the US Census focusing on", a(href = "https://www.census.gov/library/publications/2020/demo/p60-270.html", "household demographics"),
+    ",", a(href = "https://www2.census.gov/programs-surveys/saipe/datasets/2019/2019-school-districts/ussd19.xls", "school district income"),
+    ", and", a(href = "https://www2.census.gov/programs-surveys/demo/tables/p60/268/table1.xls", "supplemental poverty measurment"), "."), 
+  p("We sought to answer the following questions:"),
+  tags$div(
+    tags$ul(
+      tags$li("How has poverty changed over the course of 10 years?"),
+      tags$li("How has race played a factor in this?"),
+      tags$li("How has the coronavirus increased the gap between the poor and the rich?")
+      
+    )
+  ),
+  img("", src = "https://ichef.bbci.co.uk/news/976/cpsprodpb/106E7/production/_114930376_hi061073153.jpg")
 )
 
 
@@ -70,6 +91,40 @@ viz_two <- tabPanel(
 # y-axis: race
 # option: state
 
+# Viz3 --------------------------------------------------------------------
+
+
+
+
+
+
+
+
+# Takeaways ----------------------------------------------------------------
+takeaways <- tabPanel(
+  "Summary",
+  titlePanel("Final Takeaways"),
+  p("Reflecting back to the beginning of this project, our goals was to figure out these questions:"),
+  tags$div(
+    tags$ul(
+      tags$li("How has poverty changed over the course of 10 years?"),
+      tags$li("How has race played a factor in this?"),
+      tags$li("How has the coronavirus increased the gap between the poor and the rich?")
+    )),
+  p("From the first visualization we crafted, it showed the trend of expeptions 
+    over time. We specifcially wanted to understand those of the poor community. 
+    From that graph, we can tell that there has actually been a steady decrease
+    in poor expemtions since around 2012. Because of this, we can safely assume 
+    that more and more people are able to pay off their own taxes. This answers our first question."),
+  p("From the second visualization, it showed the exam poverty rate by race in the past 10 years.
+    Since our second question is race-related, we wanted to specifically see the 
+    data of each race to get a clear view of any patterns. From the visual, we can tell that _________"),
+  p("Lastly, the third visualization shows the effect of the coronavirus on the 
+    social gap between the rich and the poor. It is widely known that the coronavirus 
+    had an impact on all social classes, but we didn't know the real effects on 
+    the gap which led us to create this visual. From the graph, we can see that ______"),
+  p("All in all, poverty...."))
+
 # UI ----------------------------------------------------------------------
 
 
@@ -78,9 +133,9 @@ ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
                            viz_one,
-                           viz_two#,
+                           viz_two, 
                            # viz_three,
-                           # conclusion_page
+                           takeaways
                            )
 
                 )

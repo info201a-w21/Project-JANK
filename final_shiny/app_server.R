@@ -26,7 +26,7 @@ Avg_exemptions <- mutated_data %>%
             Poor_exemptions = mean(sum(Poor_exemptions)),
             Poor_Exemptions_Over_Age65 = mean(sum(Poor_Exemptions_Over_Age65)),
             Poor_Exemptions_Under_Age65 = mean(sum(Poor_Exemptions_Under_Age65)),
-            Poor_Child_exemptions = mean(sum(Poor_Child_exemptions))) %>% 
+            Poor_Child_exemptions = mean(sum(Poor_Child_exemptions))) %>%
   select(Year, Total_exemptions, Poor_exemptions, Poor_Exemptions_Over_Age65,
          Poor_Exemptions_Under_Age65, Poor_Child_exemptions)
 
@@ -49,47 +49,47 @@ server <- function(input, output){
 
     filtered_data <- Avg_exemptions %>%
       filter(Year >= input$year[1] &
-               Year <= input$year[2]) 
+               Year <= input$year[2])
       # filter(State == input$state)
-  
+
 
     plot1 <- ggplot(data = filtered_data)+
-      geom_line(mapping = aes_string(x = "Year", y = input$exemptype), 
+      geom_line(mapping = aes_string(x = "Year", y = input$exemptype),
                 colour = "SkyBlue", size = 1.5)+
       labs(y = paste("Number Of",input$exemptype, sep = " "),
            title = paste(input$exemptype,"Over Time in the U.S"))+
       scale_y_continuous(
         labels = unit_format(unit = "M", scale = 1e-6)
       )
-        
+
     ggplotly(plot1)
        })
 
 # Render-viz2 -------------------------------------------------------------
-  
+
   output$Viz2 <- renderPlotly({
-    mdf <- race_df %>% 
-      filter(Location == input$state_var) %>% 
+    mdf <- race_df %>%
+      filter(Location == input$state_var) %>%
       select(Year, input$race_var)
-    
+
     grf <- ggplot(mdf) +
       geom_col(mapping = aes_string(x = mdf$Year, y = input$race_var), fill = "#385c84") +
-      labs(x = "Year", y = paste("Pverty Count Represented by Race:", 
+      labs(x = "Year", y = paste("Pverty Count Represented by Race:",
                                  input$race_var, sep = " "),
-           title = paste("Poverty Count of", input$race_var, 
+           title = paste("Poverty Count of", input$race_var,
                          "Population in", input$state_var, "From 2009 to 2019", sep = " ")) +
-      scale_x_continuous("Year", labels = as.character(mdf$Year), 
+      scale_x_continuous("Year", labels = as.character(mdf$Year),
                          breaks = mdf$Year) +
       theme(axis.text.x = element_text(angle = 65))
-    
+
     ggplotly(grf)
   })
-  
+
 # Render-viz3 -------------------------------------------------------------
-  
+
   output$Viz3 <- renderPlotly({
     palette_fn <- colorFactor(palette = "Dark2", domain = Location[["race"]])
-    
+
     leaflet(data = race_df) %>%
       addProviderTiles("Stamen.TonerLite") %>% # add Stamen Map Tiles
       addCircleMarkers( # add markers for each shooting

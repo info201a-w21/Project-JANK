@@ -4,6 +4,7 @@ library(ggplot2)
 library(plotly)
 library(tidyverse)
 library(scales)
+library(leaflet)
 # Viz1 --------------------------------------------------------------------
 
 mutated_data <- poverty_data %>%
@@ -33,6 +34,10 @@ Avg_exemptions <- mutated_data %>%
 # Viz2 --------------------------------------------------------------------
 
 
+# Viz3 --------------------------------------------------------------------
+
+
+
 # Render-server -----------------------------------------------------------
 
 
@@ -60,7 +65,7 @@ server <- function(input, output){
     ggplotly(plot1)
        })
 
-# Render-viz2 -------------------------------------------------------------e
+# Render-viz2 -------------------------------------------------------------
   
   output$Viz2 <- renderPlotly({
     mdf <- race_df %>% 
@@ -80,4 +85,27 @@ server <- function(input, output){
     ggplotly(grf)
   })
   
+# Render-viz3 -------------------------------------------------------------
+  
+  output$Viz3 <- renderPlotly({
+    palette_fn <- colorFactor(palette = "Dark2", domain = Location[["race"]])
+    
+    leaflet(data = race_df) %>%
+      addProviderTiles("Stamen.TonerLite") %>% # add Stamen Map Tiles
+      addCircleMarkers( # add markers for each shooting
+        lat = ~lat,
+        lng = ~long,
+        label = ~paste0(year, ", ", total), # add a hover label
+        color = ~palette_fn(Location[["race"]]), # color points by race
+        fillOpacity = .7,
+        radius = 4,
+        stroke = FALSE
+      ) %>%
+      addLegend( # include a legend on the plot
+        position = "bottomright",
+        title = "race",
+        pal = palette_fn, # the palette to label
+        values = Location[["race"]], # again, using double-bracket notation
+        opacity = 1
+})
 }

@@ -74,6 +74,15 @@ viz_two <- tabPanel(
 # y-axis: race
 # option: state
 
+# Viz3 --------------------------------------------------------------------
+
+viz_three <- tabPanel(
+  "Visualization 3"
+)
+
+
+
+
 # UI ----------------------------------------------------------------------
 
 
@@ -82,9 +91,11 @@ ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
                            viz_one,
-                           viz_two#,
-                           # viz_three,
+                           viz_two,
+                           viz_three#,
                            # conclusion_page
                            )
 
                 )
+
+

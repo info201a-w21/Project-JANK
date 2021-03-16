@@ -106,6 +106,6 @@ server <- function(input, output){
         title = "race",
         pal = palette_fn, # the palette to label
         values = Location[["race"]], # again, using double-bracket notation
-        opacity = 1
+        opacity = 1)
 })
 }

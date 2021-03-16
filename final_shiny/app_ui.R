@@ -97,18 +97,11 @@ viz_two <- tabPanel(
 
 # Viz3 --------------------------------------------------------------------
 
-<<<<<<< HEAD
+
 viz_three <- tabPanel(
   "Visualization 3"
 )
-=======
->>>>>>> a2a6f0db69a6bb1f002aaefebee62d5c85c39cfb
 
-
-
-
-<<<<<<< HEAD
-=======
 
 
 
@@ -137,7 +130,7 @@ takeaways <- tabPanel(
     the gap which led us to create this visual. From the graph, we can see that ______"),
   p("All in all, poverty...."))
 
->>>>>>> a2a6f0db69a6bb1f002aaefebee62d5c85c39cfb
+
 # UI ----------------------------------------------------------------------
 
 
@@ -146,15 +139,11 @@ ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
                            viz_one,
-<<<<<<< HEAD
+
                            viz_two,
-                           viz_three#,
-                           # conclusion_page
-=======
-                           viz_two, 
-                           # viz_three,
+                           viz_three,
                            takeaways
->>>>>>> a2a6f0db69a6bb1f002aaefebee62d5c85c39cfb
+
                            )
 
                 )

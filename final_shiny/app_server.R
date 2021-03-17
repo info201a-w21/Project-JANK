@@ -32,10 +32,6 @@ Avg_exemptions <- mutated_data %>%
          Poor_Exemptions_Under_Age65, Poor_Child_exemptions)
 
 
-# Viz2 --------------------------------------------------------------------
-
-
-# Viz3 --------------------------------------------------------------------
 
 
 
@@ -91,13 +87,13 @@ server <- function(input, output){
   output$Viz3 <- renderPlotly({
     
     Poverty <- poverty_data %>% 
-      group_by(Year, input$state_name) %>%
+      filter(Name == input$state_name) %>% 
       mutate(Mean_AGI = as.numeric(gsub(",","", Mean.AGI)),
              Median_AGI = as.numeric(gsub(",","", Median.AGI))) %>% 
-      select(Year, input$state_name, Mean_AGI, Median_AGI)
-    
+      select(Year,Name, Mean_AGI, Median_AGI)
     
     chart3 <- ggplot(Poverty)+
+<<<<<<< HEAD
       geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name)) +
       labs(title = "Mean and median AGI comparison between states",
            subtitle = "From 1990 - 2018",
@@ -106,5 +102,18 @@ server <- function(input, output){
     
     print(chart3)
     })}
+=======
+      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name))+
+      labs(title = "Mean and median AGI comparison",
+           subtitle = "From 1990 - 2018",
+           x = "Mean AGI",
+           y = "Median AGI")
+    ggplotly(chart3)
+    
+})
+}
+
+
+>>>>>>> 93497d7a34940f69cdbfe186cc59e1f738b986ca
 
 

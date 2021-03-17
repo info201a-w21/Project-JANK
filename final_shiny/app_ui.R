@@ -101,8 +101,12 @@ viz_two <- tabPanel(
 
 viz_three <- tabPanel(
   "Visualization 3",
+<<<<<<< HEAD
   mainPanel(
     plotlyOutput(outputId = "Viz3"),
+=======
+  plotlyOutput("Viz3")
+>>>>>>> 9a065a3dd8debd122172353670cee838f0160bcc
 )
 
 
@@ -126,28 +130,32 @@ takeaways <- tabPanel(
     in poor expemtions since around 2012. Because of this, we can safely assume
     that more and more people are able to pay off their own taxes. This answers our first question."),
   p("From the second visualization, it showed the exam poverty rate by race in the past 10 years.
-    Since our second question is race-related, we wanted to specifically see the
-    data of each race to get a clear view of any patterns. From the visual, we can tell that _________"),
+    Since our second question is race-related, we wanted to specifically see the 
+    data of each race to get a clear view of any patterns. From the visual, if we center on California state,
+    we can see that people of Hispanic decent were more likely to fit in the poverty category in comparison
+    to those of white decent. If we look at 2013 where there is the most poverty 
+    records from the white community, there are 1,551,800 reports. When looking at
+    the same year but for those in the hispanic community, there are 3,340,400 reports.
+    That is almost 2.2 times more than people of white decent. However, both races 
+    are slowly declining which is a good sign."),
   p("Lastly, the third visualization shows the effect of the coronavirus on the
     social gap between the rich and the poor. It is widely known that the coronavirus
     had an impact on all social classes, but we didn't know the real effects on
     the gap which led us to create this visual. From the graph, we can see that ______"),
-  p("All in all, poverty...."))
+  p("All in all, poverty is still a very big issue in the US as well as other countries 
+    around the world. It is a good sign to see it decreasing and hopefully it will 
+    continue to decline."))
 
 
 # UI ----------------------------------------------------------------------
-
-
 
 ui <- fluidPage(theme = shinytheme("darkly"),
                 navbarPage("Poverty and Income Inequality",
                            intro_page,
                            viz_one,
-
                            viz_two,
                            viz_three,
                            takeaways
-
                            )
 
                 )

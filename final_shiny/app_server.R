@@ -32,10 +32,6 @@ Avg_exemptions <- mutated_data %>%
          Poor_Exemptions_Under_Age65, Poor_Child_exemptions)
 
 
-# Viz2 --------------------------------------------------------------------
-
-
-# Viz3 --------------------------------------------------------------------
 
 
 
@@ -91,42 +87,21 @@ server <- function(input, output){
   output$Viz3 <- renderPlotly({
     
     Poverty <- poverty_data %>% 
-      group_by(Year, input$state_name) %>%
+      filter(Name == input$state_name) %>% 
       mutate(Mean_AGI = as.numeric(gsub(",","", Mean.AGI)),
              Median_AGI = as.numeric(gsub(",","", Median.AGI))) %>% 
-      select(Year, input$state_name, Mean_AGI, Median_AGI)
-    
+      select(Year,Name, Mean_AGI, Median_AGI)
     
     chart3 <- ggplot(Poverty)+
       geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name))+
-      labs(title = "Mean and median AGI comparison between states",
+      labs(title = "Mean and median AGI comparison",
            subtitle = "From 1990 - 2018",
            x = "Mean AGI",
            y = "Median AGI")
-    
-    print(chart3)
+    ggplotly(chart3)
     
 })
-  palette_fn <- colorFactor(palette = "Dark2", domain = Location[["race"]])
-    
-    leaflet(data = race_df) %>%
-      addProviderTiles("Stamen.TonerLite") %>% # add Stamen Map Tiles
-      addCircleMarkers( # add markers for each shooting
-        lat = ~lat,
-        lng = ~long,
-        label = ~paste0(year, ", ", total), # add a hover label
-        color = ~palette_fn(Location[["race"]]), # color points by race
-        fillOpacity = .7,
-        radius = 4,
-        stroke = FALSE
-      ) %>%
-      addLegend( # include a legend on the plot
-        position = "bottomright",
-        title = "race",
-        pal = palette_fn, # the palette to label
-        values = Location[["race"]], # again, using double-bracket notation
-        opacity = 1)
-  }
+}
 
 
 

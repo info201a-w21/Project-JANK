@@ -98,23 +98,19 @@ viz_two <- tabPanel(
 
 # Viz3 --------------------------------------------------------------------
 
+poverty_states <- unique(poverty_data$Name)
 
 viz_three <- tabPanel(
   "Visualization 3",
-  titlePanel("Comparison of Mean and Median AGI in Two States"),
+  
+  titlePanel("Comparison of Mean and Median AGI"),
   
   y_input <- selectInput(
     inputId = "state_name",
-    choices = states,
+    choices = poverty_states,
     label = "Select a State"
   ),
-  
-  y_input <- selectInput(
-    inputId = "state_name",
-    choices = states,
-    label = "Select another State to compare"
-  ),
-  
+
   plotlyOutput("Viz3")
 )
 

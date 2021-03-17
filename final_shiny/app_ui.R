@@ -101,12 +101,21 @@ viz_two <- tabPanel(
 
 viz_three <- tabPanel(
   "Visualization 3",
-<<<<<<< HEAD
-  mainPanel(
-    plotlyOutput(outputId = "Viz3"),
-=======
+  titlePanel("Comparison of Mean and Median AGI in Two States"),
+  
+  y_input <- selectInput(
+    inputId = "state_name",
+    choices = states,
+    label = "Select a State"
+  ),
+  
+  y_input <- selectInput(
+    inputId = "state_name",
+    choices = states,
+    label = "Select another State to compare"
+  ),
+  
   plotlyOutput("Viz3")
->>>>>>> 9a065a3dd8debd122172353670cee838f0160bcc
 )
 
 

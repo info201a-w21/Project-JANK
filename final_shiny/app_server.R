@@ -89,14 +89,14 @@ server <- function(input, output){
   output$Viz3 <- renderPlotly({
     
     Poverty <- poverty_data %>% 
-      group_by(Year, Name) %>%
+      group_by(Year, input$state_name) %>%
       mutate(Mean_AGI = as.numeric(gsub(",","", Mean.AGI)),
              Median_AGI = as.numeric(gsub(",","", Median.AGI))) %>% 
-      select(Year, Name, Mean_AGI, Median_AGI)
+      select(Year, input$state_name, Mean_AGI, Median_AGI)
     
     
     chart3 <- ggplot(Poverty)+
-      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = Name))+
+      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name))+
       labs(title = "Mean and median AGI comparison between states",
            subtitle = "From 1990 - 2018",
            x = "Mean AGI",

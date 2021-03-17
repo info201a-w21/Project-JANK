@@ -144,7 +144,8 @@ takeaways <- tabPanel(
     the same year but for those in the hispanic community, there are 3,340,400 reports.
     That is almost 2.2 times more than people of white decent. However, both races 
     are slowly declining which is a good sign."),
-  p("Lastly, the third visualization shows the mean and median of AGI (adjusted gross income)
+  p("Lastly, we were unable to collect enough data related to the coronavirus to be able draw a conclusion.
+  Instead, we decided to make a third visualization that shows the mean and median of AGI (adjusted gross income)
   of each state. From this visual, we can tell that ____, represented in the turquoise color
   is the state with the least average and median AGI compared to other states. This means that 
   there's a higher chance of people living there with low income. On the other hand, the 

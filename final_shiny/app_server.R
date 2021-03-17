@@ -98,36 +98,13 @@ server <- function(input, output){
     
     
     chart3 <- ggplot(Poverty)+
-      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name))+
+      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name)) +
       labs(title = "Mean and median AGI comparison between states",
            subtitle = "From 1990 - 2018",
            x = "Mean AGI",
            y = "Median AGI")
     
     print(chart3)
-    
-})
-  palette_fn <- colorFactor(palette = "Dark2", domain = Location[["race"]])
-    
-    leaflet(data = race_df) %>%
-      addProviderTiles("Stamen.TonerLite") %>% # add Stamen Map Tiles
-      addCircleMarkers( # add markers for each shooting
-        lat = ~lat,
-        lng = ~long,
-        label = ~paste0(year, ", ", total), # add a hover label
-        color = ~palette_fn(Location[["race"]]), # color points by race
-        fillOpacity = .7,
-        radius = 4,
-        stroke = FALSE
-      ) %>%
-      addLegend( # include a legend on the plot
-        position = "bottomright",
-        title = "race",
-        pal = palette_fn, # the palette to label
-        values = Location[["race"]], # again, using double-bracket notation
-        opacity = 1)
-  }
-
-
+    })}
 
 

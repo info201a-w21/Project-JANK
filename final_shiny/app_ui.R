@@ -118,9 +118,6 @@ viz_three <- tabPanel(
   plotlyOutput("Viz3")
 )
 
-
-
-
 # Takeaways ----------------------------------------------------------------
   
 takeaways <- tabPanel(
@@ -147,10 +144,12 @@ takeaways <- tabPanel(
     the same year but for those in the hispanic community, there are 3,340,400 reports.
     That is almost 2.2 times more than people of white decent. However, both races 
     are slowly declining which is a good sign."),
-  p("Lastly, the third visualization shows the effect of the coronavirus on the
-    social gap between the rich and the poor. It is widely known that the coronavirus
-    had an impact on all social classes, but we didn't know the real effects on
-    the gap which led us to create this visual. From the graph, we can see that ______"),
+  p("Lastly, the third visualization shows the mean and median of AGI (adjusted gross income)
+  of each state. From this visual, we can tell that ____, represented in the turquoise color
+  is the state with the least average and median AGI compared to other states. This means that 
+  there's a higher chance of people living there with low income. On the other hand, the 
+  mustard yellow, Delaware, has the highest average and median AGI, meaning there are 
+  probably more higher income individuals there."),
   p("All in all, poverty is still a very big issue in the US as well as other countries 
     around the world. It is a good sign to see it decreasing and hopefully it will 
     continue to decline."))

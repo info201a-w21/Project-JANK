@@ -93,20 +93,10 @@ server <- function(input, output){
       select(Year,Name, Mean_AGI, Median_AGI)
     
     chart3 <- ggplot(Poverty)+
-<<<<<<< HEAD
-      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name)) +
-      labs(title = "Mean and median AGI comparison between states",
+      geom_point(mapping = aes(x = Year, y = Median_AGI))+
+      labs(title = "Trend of Median AGI Over Years",
            subtitle = "From 1990 - 2018",
-           x = "Mean AGI",
-           y = "Median AGI")
-    
-    print(chart3)
-    })}
-=======
-      geom_point(mapping = aes(x = Mean_AGI, y = Median_AGI, color = input$state_name))+
-      labs(title = "Mean and median AGI comparison",
-           subtitle = "From 1990 - 2018",
-           x = "Mean AGI",
+           x = "Year",
            y = "Median AGI")
     ggplotly(chart3)
     
@@ -114,6 +104,5 @@ server <- function(input, output){
 }
 
 
->>>>>>> 93497d7a34940f69cdbfe186cc59e1f738b986ca
 
 

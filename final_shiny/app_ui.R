@@ -103,7 +103,7 @@ poverty_states <- unique(poverty_data$Name)
 viz_three <- tabPanel(
   "Visualization 3",
   
-  titlePanel("Comparison of Mean and Median AGI"),
+  titlePanel("Trend of Median AGI (gross income minus adjustments to income) Over Years"),
   
   y_input <- selectInput(
     inputId = "state_name",
@@ -126,10 +126,10 @@ takeaways <- tabPanel(
       tags$li("How has race played a factor in this?"),
       tags$li("How has the coronavirus increased the gap between the poor and the rich?")
     )),
-  p("From the first visualization we crafted, it showed the trend of expeptions
+  p("From the first visualization we crafted, it showed the trend of exemptions
     over time. We specifcially wanted to understand those of the poor community.
     From that graph, we can tell that there has actually been a steady decrease
-    in poor expemtions since around 2012. Because of this, we can safely assume
+    in poor exemptions since around 2012. Because of this, we can safely assume
     that more and more people are able to pay off their own taxes. This answers our first question."),
   p("From the second visualization, it showed the exam poverty rate by race in the past 10 years.
     Since our second question is race-related, we wanted to specifically see the 
@@ -141,12 +141,9 @@ takeaways <- tabPanel(
     That is almost 2.2 times more than people of white decent. However, both races 
     are slowly declining which is a good sign."),
   p("Lastly, we were unable to collect enough data related to the coronavirus to be able draw a conclusion.
-  Instead, we decided to make a third visualization that shows the mean and median of AGI (adjusted gross income)
-  of each state. From this visual, we can tell that ____, represented in the turquoise color
-  is the state with the least average and median AGI compared to other states. This means that 
-  there's a higher chance of people living there with low income. On the other hand, the 
-  mustard yellow, Delaware, has the highest average and median AGI, meaning there are 
-  probably more higher income individuals there."),
+  Instead, we decided to make a third visualization that shows the median AGI (adjusted gross income)
+  of each state over the years. Quick note, AGI means the gross income minus adjustments to income. From this visual, we can tell 
+    that as the years increases, the median AGI increases as well. We can safely assume that the income continues to increase at a steady rate."),
   p("All in all, poverty is still a very big issue in the US as well as other countries 
     around the world. It is a good sign to see it decreasing and hopefully it will 
     continue to decline."))

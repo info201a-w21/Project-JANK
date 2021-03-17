@@ -100,13 +100,16 @@ viz_two <- tabPanel(
 
 
 viz_three <- tabPanel(
-  "Visualization 3"
+  "Visualization 3",
+  mainPanel(
+    plotlyOutput(outputId = "Viz3"),
 )
 
 
 
 
 # Takeaways ----------------------------------------------------------------
+  
 takeaways <- tabPanel(
   "Summary",
   titlePanel("Final Takeaways"),
